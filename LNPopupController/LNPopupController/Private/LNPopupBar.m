@@ -8,7 +8,7 @@
 
 #import "LNPopupBar+Private.h"
 #import "LNPopupCustomBarViewController+Private.h"
-#import "MarqueeLabel.h"
+#import "LNMarqueeLabel.h"
 
 @interface _LNPopupToolbar : UIToolbar @end
 @implementation _LNPopupToolbar
@@ -37,7 +37,7 @@
 
 @end
 
-@protocol __MarqueeLabelType <NSObject>
+@protocol __LNMarqueeLabelType <NSObject>
 
 - (void)resetLabel;
 - (void)unpauseLabel;
@@ -47,8 +47,8 @@
 
 @end
 
-@interface __FakeMarqueeLabel : UILabel <__MarqueeLabelType> @end
-@implementation __FakeMarqueeLabel
+@interface __FakeLNMarqueeLabel : UILabel <__LNMarqueeLabelType> @end
+@implementation __FakeLNMarqueeLabel
 
 - (void)resetLabel {}
 - (void)unpauseLabel {}
@@ -58,7 +58,7 @@
 
 @end
 
-@interface MarqueeLabel () <__MarqueeLabelType> @end
+@interface LNMarqueeLabel () <__LNMarqueeLabelType> @end
 
 const CGFloat LNPopupBarHeightCompact = 40.0;
 const CGFloat LNPopupBarHeightProminent = 64.0;
@@ -73,8 +73,8 @@ const NSInteger LNBackgroundStyleInherit = -1;
 	UIVisualEffectView* _backgroundView;
 	BOOL _delaysBarButtonItemLayout;
 	UIView* _titlesView;
-	UILabel<__MarqueeLabelType>* _titleLabel;
-	UILabel<__MarqueeLabelType>* _subtitleLabel;
+	UILabel<__LNMarqueeLabelType>* _titleLabel;
+	UILabel<__LNMarqueeLabelType>* _subtitleLabel;
 	BOOL _needsLabelsLayout;
     BOOL _playerLoading;
 
@@ -495,20 +495,20 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 	_progressView.accessibilityValue = accessibilityProgressValue;
 }
 
-- (UILabel<__MarqueeLabelType>*)_newMarqueeLabel
+- (UILabel<__LNMarqueeLabelType>*)_newLNMarqueeLabel
 {
 	if(_marqueeScrollEnabled == NO)
 	{
-		__FakeMarqueeLabel* rv = [[__FakeMarqueeLabel alloc] initWithFrame:_titlesView.bounds];
+		__FakeLNMarqueeLabel* rv = [[__FakeLNMarqueeLabel alloc] initWithFrame:_titlesView.bounds];
 		rv.minimumScaleFactor = 1.0;
 		return rv;
 	}
 	
-	MarqueeLabel* rv = [[MarqueeLabel alloc] initWithFrame:_titlesView.bounds rate:20 andFadeLength:10];
+	LNMarqueeLabel* rv = [[LNMarqueeLabel alloc] initWithFrame:_titlesView.bounds rate:20 andFadeLength:10];
 	rv.leadingBuffer = 5.0;
 	rv.trailingBuffer = 15.0;
 	rv.animationDelay = 2.0;
-	rv.marqueeType = MLContinuous;
+	rv.marqueeType = LNMLContinuous;
 	return rv;
 }
 
@@ -557,7 +557,7 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 		{
 			if(_titleLabel == nil)
 			{
-				_titleLabel = [self _newMarqueeLabel];
+				_titleLabel = [self _newLNMarqueeLabel];
 				[_titlesView addSubview:_titleLabel];
 			}
 			
@@ -588,7 +588,7 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 			
 			if(_subtitleLabel == nil)
 			{
-				_subtitleLabel = [self _newMarqueeLabel];
+				_subtitleLabel = [self _newLNMarqueeLabel];
 				[_titlesView addSubview:_subtitleLabel];
 			}
 			
