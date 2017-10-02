@@ -744,9 +744,18 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 
 - (void)_reconfigure_progress
 {
-	[UIView performWithoutAnimation:^{
-		[self.popupBar.progressView setProgress:_currentPopupItem.progress animated:NO];
-	}];
+    if (self.popupBar.progressView.progress == 0.0) {
+        [self.popupBar.progressView setProgress:_currentPopupItem.progress];
+    } else if (self.popupBar.progressView.progress > _currentPopupItem.progress) {
+        [self.popupBar.progressView setProgress:_currentPopupItem.progress];
+    } else {
+        [self.popupBar.progressView setProgress:_currentPopupItem.progress];
+        if (_currentPopupItem.progress > 0) {
+            [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+                [self.popupBar.progressView layoutIfNeeded];
+            } completion:nil];
+        }
+    }
 }
 
 - (void)_reconfigure_accessibilityLavel
