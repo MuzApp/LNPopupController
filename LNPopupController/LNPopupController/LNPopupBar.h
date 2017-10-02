@@ -169,6 +169,8 @@ typedef NS_ENUM(NSUInteger, LNPopupBarProgressViewStyle) {
  */
 @property (nullable, nonatomic, strong) LNPopupCustomBarViewController* customBarViewController;
 
+- (void)setPlayerLoading:(BOOL)loading;
+    
 @end
 
 NS_ASSUME_NONNULL_END

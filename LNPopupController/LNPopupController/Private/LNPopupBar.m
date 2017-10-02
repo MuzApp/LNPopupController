@@ -76,14 +76,16 @@ const NSInteger LNBackgroundStyleInherit = -1;
 	UILabel<__MarqueeLabelType>* _titleLabel;
 	UILabel<__MarqueeLabelType>* _subtitleLabel;
 	BOOL _needsLabelsLayout;
-	
+    BOOL _playerLoading;
+
 	UIColor* _userTintColor;
 	UIColor* _userBackgroundColor;
 	
 	UIBlurEffectStyle _actualBackgroundStyle;
 	
 	UIImageView* _imageView;
-	
+    UIActivityIndicatorView* _activityIndicator;
+
 	UIView* _shadowView;
     
     NSArray<__kindof NSLayoutConstraint *> * _progressViewVerticalConstraints;
@@ -214,7 +216,12 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 		_imageView.layer.masksToBounds = YES;
 		
 		[self addSubview:_imageView];
-		
+        
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activityIndicator.autoresizingMask = UIViewAutoresizingNone;
+        [_activityIndicator startAnimating];
+        [self addSubview:_activityIndicator];
+        
 		_shadowView = [UIView new];
 		_shadowView.backgroundColor = [UIColor colorWithWhite:169.0 / 255.0 alpha:1.0];
 		[self addSubview:_shadowView];
@@ -268,6 +275,7 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 	
 	[self bringSubviewToFront:_highlightView];
 	[self bringSubviewToFront:_imageView];
+    [self bringSubviewToFront:_activityIndicator];
 	[self bringSubviewToFront:_titlesView];
 	[self bringSubviewToFront:_shadowView];
 	
@@ -701,21 +709,21 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 	
 	if(_resolvedStyle == LNPopupBarStyleCompact)
 	{
-		_imageView.hidden = YES;
-		
+        _imageView.hidden = _activityIndicator.hidden = YES;
 		return;
 	}
 	
 	_imageView.image = _image;
-	_imageView.hidden = _image == nil;
-	
-	CGFloat safeLeading = self.layoutMargins.left;
-	if (@available(iOS 11.0, *)) {
-		safeLeading = MAX(self.safeAreaInsets.left, safeLeading);
-	}
-	
-	_imageView.center = CGPointMake(safeLeading + LNPopupBarProminentImageWidth / 2, LNPopupBarHeightProminent / 2);
-	_imageView.bounds = CGRectMake(0, 0, LNPopupBarProminentImageWidth, LNPopupBarProminentImageWidth);
+    _imageView.hidden = _activityIndicator.hidden = _image == nil;
+    
+    CGFloat safeLeading = self.layoutMargins.left;
+    if (@available(iOS 11.0, *)) {
+        safeLeading = MAX(self.safeAreaInsets.left, safeLeading);
+    }
+    
+    _imageView.center = CGPointMake(safeLeading + LNPopupBarProminentImageWidth / 2, LNPopupBarHeightProminent / 2);
+    _imageView.bounds = CGRectMake(0, 0, LNPopupBarProminentImageWidth, LNPopupBarProminentImageWidth);
+    _activityIndicator.center = _imageView.center;
 	
 	if(previouslyHidden != _imageView.hidden)
 	{
@@ -901,6 +909,18 @@ static UIBlurEffectStyle _LNBlurEffectStyleForSystemBarStyle(UIBarStyle systemBa
 - (void)dealloc
 {
 	[_customBarViewController removeObserver:self forKeyPath:@"preferredContentSize"];
+}
+
+- (void)setPlayerLoading:(BOOL)loading
+{
+    if (loading != _playerLoading)
+    {
+        _playerLoading = loading;
+        [UIView animateWithDuration:0.333 animations:^{
+            _imageView.alpha = _playerLoading ? 0.0 : 1.0;
+            _activityIndicator.alpha = _playerLoading ? 1.0 : 0.0;
+        }];
+    }
 }
 
 @end
