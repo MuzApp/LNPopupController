@@ -11,12 +11,12 @@
 
 //#define LNPopupControllerEnforceStrictClean
 
-#define MarqueeLabel __MarqueeLabel
-#define MarqueeType __MarqueeType
-#define MLLeftRight __MLLeftRight
-#define MLRightLeft __MLRightLeft
-#define MLContinuous __MLContinuous
-#define MLContinuousReverse __MLContinuousReverse
+#define LNMarqueeLabel __LNMarqueeLabel
+#define LNMarqueeType __LNMarqueeType
+#define LNMLLeftRight __LNMLLeftRight
+#define LNMLRightLeft __LNMLRightLeft
+#define LNMLContinuous __LNMLContinuous
+#define LNMLContinuousReverse __LNMLContinuousReverse
 #define GradientSetupAnimation __GradientSetupAnimation
 
 #define LNChevronView __LNChevronView

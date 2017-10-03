@@ -13,8 +13,8 @@
 		391481BB1DCFA514002416D1 /* LNChevronView.h in Headers */ = {isa = PBXBuildFile; fileRef = 391481B91DCFA514002416D1 /* LNChevronView.h */; };
 		39222ADB1F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 39222AD91F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.h */; };
 		39222ADC1F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39222ADA1F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.m */; };
-		39314A521B6AE7A400574D3C /* MarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 39314A501B6AE7A400574D3C /* MarqueeLabel.h */; };
-		39314A531B6AE7A400574D3C /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39314A511B6AE7A400574D3C /* MarqueeLabel.m */; };
+		39314A521B6AE7A400574D3C /* LNMarqueeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 39314A501B6AE7A400574D3C /* LNMarqueeLabel.h */; };
+		39314A531B6AE7A400574D3C /* LNMarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 39314A511B6AE7A400574D3C /* LNMarqueeLabel.m */; };
 		3934A9F51DD4C935004B073A /* LNPopupController.pch in Headers */ = {isa = PBXBuildFile; fileRef = 3934A9F41DD4C935004B073A /* LNPopupController.pch */; };
 		3947E1A11B61CD1F0001178B /* UIViewController+LNPopupSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 3947E19F1B61CD1F0001178B /* UIViewController+LNPopupSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3947E1A21B61CD1F0001178B /* UIViewController+LNPopupSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3947E1A01B61CD1F0001178B /* UIViewController+LNPopupSupport.m */; };
@@ -51,8 +51,8 @@
 		391481B91DCFA514002416D1 /* LNChevronView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNChevronView.h; sourceTree = "<group>"; };
 		39222AD91F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNPopupOpenTapGesutreRecognizer.h; sourceTree = "<group>"; };
 		39222ADA1F1A1C5800388E06 /* LNPopupOpenTapGesutreRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNPopupOpenTapGesutreRecognizer.m; sourceTree = "<group>"; };
-		39314A501B6AE7A400574D3C /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
-		39314A511B6AE7A400574D3C /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
+		39314A501B6AE7A400574D3C /* LNMarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNMarqueeLabel.h; sourceTree = "<group>"; };
+		39314A511B6AE7A400574D3C /* LNMarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNMarqueeLabel.m; sourceTree = "<group>"; };
 		3934A9F41DD4C935004B073A /* LNPopupController.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LNPopupController.pch; path = ../../LNPopupController.pch; sourceTree = "<group>"; };
 		3947E19F1B61CD1F0001178B /* UIViewController+LNPopupSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIViewController+LNPopupSupport.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		3947E1A01B61CD1F0001178B /* UIViewController+LNPopupSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIViewController+LNPopupSupport.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -102,8 +102,8 @@
 				3934A9F41DD4C935004B073A /* LNPopupController.pch */,
 				391481B91DCFA514002416D1 /* LNChevronView.h */,
 				391481B81DCFA514002416D1 /* LNChevronView.m */,
-				39314A501B6AE7A400574D3C /* MarqueeLabel.h */,
-				39314A511B6AE7A400574D3C /* MarqueeLabel.m */,
+				39314A501B6AE7A400574D3C /* LNMarqueeLabel.h */,
+				39314A511B6AE7A400574D3C /* LNMarqueeLabel.m */,
 				394A85BF1B630992004FFC61 /* _LNWeakRef.h */,
 				394A85C01B630992004FFC61 /* _LNWeakRef.m */,
 				3947E1B81B6300370001178B /* LNPopupBar+Private.h */,
@@ -189,7 +189,7 @@
 				3947E1B21B61CE4A0001178B /* LNPopupController.h in Headers */,
 				3947E1BA1B6300370001178B /* LNPopupBar+Private.h in Headers */,
 				397AFC051F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.h in Headers */,
-				39314A521B6AE7A400574D3C /* MarqueeLabel.h in Headers */,
+				39314A521B6AE7A400574D3C /* LNMarqueeLabel.h in Headers */,
 				391481BB1DCFA514002416D1 /* LNChevronView.h in Headers */,
 				39599BAD1E02CDF4008EE386 /* LNPopupCustomBarViewController+Private.h in Headers */,
 				3934A9F51DD4C935004B073A /* LNPopupController.pch in Headers */,
@@ -277,7 +277,7 @@
 				394A85BA1B6304F5004FFC61 /* LNPopupItem.m in Sources */,
 				3947E1B31B61CE4A0001178B /* LNPopupController.m in Sources */,
 				397AFBFC1F1A1ED200E7D95C /* LNForwardingDelegate.m in Sources */,
-				39314A531B6AE7A400574D3C /* MarqueeLabel.m in Sources */,
+				39314A531B6AE7A400574D3C /* LNMarqueeLabel.m in Sources */,
 				391481BA1DCFA514002416D1 /* LNChevronView.m in Sources */,
 				3947E1A61B61CD650001178B /* LNPopupBar.m in Sources */,
 				394A85C91B63FE52004FFC61 /* UIViewController+LNPopupSupportPrivate.m in Sources */,
