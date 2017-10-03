@@ -329,11 +329,18 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 	if(state == LNPopupPresentationStateOpen)
 	{
 		targetFrame = [self _frameForOpenPopupBar];
+        [[NSNotificationCenter defaultCenter] postNotificationName:LNPopupNotificationWillOpen
+                                                            object:nil];
 	}
 	else if(state == LNPopupPresentationStateClosed || (state == LNPopupPresentationStateTransitioning && _popupControllerTargetState == LNPopupPresentationStateHidden))
 	{
 		targetFrame = [self _frameForClosedPopupBar];
 	}
+    
+    if (state == LNPopupPresentationStateClosed) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:LNPopupNotificationWillClose
+                                                            object:nil];
+    }
 	
 	_cachedDefaultFrame = [_containerController defaultFrameForBottomDockingView_internalOrDeveloper];
 	_cachedInsets = [_containerController insetsForBottomDockingView];
@@ -461,6 +468,8 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 			 
 			 _popupContentView.accessibilityViewIsModal = NO;
 			 UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+             [[NSNotificationCenter defaultCenter] postNotificationName:LNPopupNotificationDidClose
+                                                                 object:nil];
 		 }
 		 else if(state == LNPopupPresentationStateOpen)
 		 {
@@ -472,6 +481,8 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 			 
 			 _popupContentView.accessibilityViewIsModal = YES;
 			 UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, _popupContentView.popupCloseButton);
+             [[NSNotificationCenter defaultCenter] postNotificationName:LNPopupNotificationDidOpen
+                                                                 object:nil];
 		 }
 		 
 		 _popupControllerState = state;

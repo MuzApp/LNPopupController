@@ -13,6 +13,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *LNPopupNotificationDidOpen;
+extern NSString *LNPopupNotificationWillOpen;
+extern NSString *LNPopupNotificationDidClose;
+extern NSString *LNPopupNotificationWillClose;
+
 /**
  * Available interaction styles with the popup bar and popup content view.
  */
