@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name     = 'LNPopupController'
-    s.version  = '2.1.4'
+    s.version  = '2.5.0'
     s.license  = { :type => 'MIT' }
     s.summary  = 'summary'
     s.homepage = 'https://github.com/LeoNatan/LNPopupController'
@@ -11,5 +11,4 @@ Pod::Spec.new do |s|
     s.source_files = 'LNPopupController/**/*.{h,m}'
     s.resources = 'LNPopupController/**/*.xcassets'
     s.ios.deployment_target = '8.0'
-    s.dependency 'MarqueeLabel'
 end
