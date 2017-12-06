@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name     = 'LNPopupController'
-    s.version  = '2.5.1'
+    s.version  = '2.5.2'
     s.license  = { :type => 'MIT' }
     s.summary  = 'summary'
     s.homepage = 'https://github.com/MuzApp/LNPopupController'
