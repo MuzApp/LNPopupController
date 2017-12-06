@@ -569,7 +569,11 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 		UIScrollView* possibleScrollView = (id)pgr.view;
 		if([possibleScrollView isKindOfClass:[UIScrollView class]])
 		{
-			if(_dismissGestureStarted == NO && possibleScrollView.contentOffset.y > - (possibleScrollView.contentInset.top + LNPopupBarDeveloperPanGestureThreshold))
+			id<UIGestureRecognizerDelegate> delegate = _popupContentView.popupInteractionGestureRecognizer.delegate;
+			
+			if(([delegate respondsToSelector:@selector(gestureRecognizer:shouldRequireFailureOfGestureRecognizer:)] && [delegate gestureRecognizer:_popupContentView.popupInteractionGestureRecognizer shouldRequireFailureOfGestureRecognizer:pgr] == YES) ||
+			   ([delegate respondsToSelector:@selector(gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:)] && [delegate gestureRecognizer:_popupContentView.popupInteractionGestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:pgr] == NO) ||
+			   (_dismissGestureStarted == NO && possibleScrollView.contentOffset.y > - (possibleScrollView.contentInset.top + LNPopupBarDeveloperPanGestureThreshold)))
 			{
 				return;
 			}
@@ -960,7 +964,18 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 	CGFloat startingTopConstant = _popupCloseButtonTopConstraint.constant;
 	
 	_popupCloseButtonTopConstraint.constant = _popupContentView.popupCloseButton.style == LNPopupCloseButtonStyleRound ? 12 : 8;
-	_popupCloseButtonTopConstraint.constant += ([UIApplication sharedApplication].isStatusBarHidden ? 0 : [UIApplication sharedApplication].statusBarFrame.size.height);
+	
+	CGFloat windowTopSafeAreaInset = 0;
+	
+	if (@available(iOS 11.0, *)) {
+		windowTopSafeAreaInset += _popupContentView.window.safeAreaInsets.top;
+	}
+	
+	_popupCloseButtonTopConstraint.constant += windowTopSafeAreaInset;
+	if(windowTopSafeAreaInset == 0)
+	{
+		_popupCloseButtonTopConstraint.constant += (_containerController.popupContentViewController.prefersStatusBarHidden ? 0 : [UIApplication sharedApplication].statusBarFrame.size.height);
+	}
 	
 	id hitTest = [[_currentContentController view] hitTest:CGPointMake(12, _popupCloseButtonTopConstraint.constant) withEvent:nil];
 	UINavigationBar* possibleBar = (id)[self _view:hitTest selfOrSuperviewKindOfClass:[UINavigationBar class]];
@@ -972,9 +987,9 @@ static CGFloat __smoothstep(CGFloat a, CGFloat b, CGFloat x)
 	if(startingTopConstant != _popupCloseButtonTopConstraint.constant)
 	{
 		[_popupContentView setNeedsUpdateConstraints];
-		[UIView animateWithDuration:0.2 animations:^{
+		[UIView animateWithDuration:UIApplication.sharedApplication.statusBarOrientationAnimationDuration delay:0.0 usingSpringWithDamping:500 initialSpringVelocity:0.0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionAllowAnimatedContent animations:^{
 			[_popupContentView layoutIfNeeded];
-		}];
+		} completion:nil];
 	}
 }
 
