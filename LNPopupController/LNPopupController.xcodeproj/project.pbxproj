@@ -39,7 +39,7 @@
 		397AFC021F1A21DD00E7D95C /* LNPopupLongPressGesutreRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397AFC001F1A21DD00E7D95C /* LNPopupLongPressGesutreRecognizer.m */; };
 		397AFC051F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 397AFC031F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.h */; };
 		397AFC061F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 397AFC041F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.m */; };
-		39A9249A1B58530A003C1C19 /* LNPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 39A924991B5852ED003C1C19 /* LNPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39A9249A1B58530A003C1C19 /* LNPopupControllerHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 39A924991B5852ED003C1C19 /* LNPopupControllerHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39C81A321B642DDD00D3B645 /* LNPopupItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 394A85B71B6304F5004FFC61 /* LNPopupItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,7 @@
 		397AFC001F1A21DD00E7D95C /* LNPopupLongPressGesutreRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNPopupLongPressGesutreRecognizer.m; sourceTree = "<group>"; };
 		397AFC031F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNPopupInteractionPanGestureRecognizer.h; sourceTree = "<group>"; };
 		397AFC041F1A229400E7D95C /* LNPopupInteractionPanGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNPopupInteractionPanGestureRecognizer.m; sourceTree = "<group>"; };
-		39A924991B5852ED003C1C19 /* LNPopupController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNPopupController.h; sourceTree = "<group>"; };
+		39A924991B5852ED003C1C19 /* LNPopupControllerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNPopupControllerHeader.h; sourceTree = "<group>"; };
 		39DB52E51B5823330061C589 /* LNPopupController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LNPopupController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46ECC2AE1BF31025005CE96C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -142,7 +142,7 @@
 		39DB52DB1B5823330061C589 = {
 			isa = PBXGroup;
 			children = (
-				39A924991B5852ED003C1C19 /* LNPopupController.h */,
+				39A924991B5852ED003C1C19 /* LNPopupControllerHeader.h */,
 				39DB52E71B5823330061C589 /* LNPopupController */,
 				39DB52E61B5823330061C589 /* Products */,
 			);
@@ -179,7 +179,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A9249A1B58530A003C1C19 /* LNPopupController.h in Headers */,
+				39A9249A1B58530A003C1C19 /* LNPopupControllerHeader.h in Headers */,
 				3947E1A91B61CDA40001178B /* LNPopupCloseButton.h in Headers */,
 				390DD0111BB2EAC30064DB4A /* LNPopupContentView.h in Headers */,
 				394A85B61B630409004FFC61 /* LNPopupBar.h in Headers */,
